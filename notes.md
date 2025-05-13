@@ -11,7 +11,7 @@ Main implementation for truffula. Gives users options to customize the way their
 ## ConsoleColor.java
 
 Allows for coloring text on the console. Provides a number of ANSI codes that correspond to colored values. Provides
-methods getting color codes and getting color codes as a string. 
+methods getting color codes and getting color codes as a string.
 
 ## ColorPrinter.java / ColorPrinterTest.java
 
@@ -21,10 +21,16 @@ ColorPrinterTest.java is used to test that the colors being printed are expected
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
-Constructs the truffula options object for the various cmd arguments. Provides methods for getting the options. 
+Constructs the truffula options object for the various cmd arguments. Provides methods for getting the options.
 
 TruffulaOptionsTest.java run tests on its functionlity. Will need to look into test argument tempDir.
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
 
+TruffulaPrinter.java is a class that is used to print the file structure with the given options by the user. It also sorts files for the user and color codes them accordingly if colors are requested.
+
+TruffulaPrinterTest.java tests that os is windows (maybe add check for mac) the output for printing methods are displaying files correctly given a directory in the test params
+
 ## AlphabeticalFileSorter.java
+
+Sorts files shown in the terminal to be displayed in alphabetical order
