@@ -10,6 +10,9 @@ Main implementation for truffula. Gives users options to customize the way their
 
 ## ConsoleColor.java
 
+Allows for coloring text on the console. Provides a number of ANSI codes that correspond to colored values. Provides
+methods for coloring text, getting color codes, and getting color codes as a string. 
+
 ## ColorPrinter.java / ColorPrinterTest.java
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
