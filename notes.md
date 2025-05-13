@@ -15,6 +15,10 @@ methods getting color codes and getting color codes as a string.
 
 ## ColorPrinter.java / ColorPrinterTest.java
 
+ColorPrinter.java is a class used to print different text colors to a PrintStream. Keeps track of different variables like the currentColor and allows you to set the current color, while also resetting the current color or saving it for the next output. lastly, it can print those string out into the terminal.
+
+ColorPrinterTest.java is used to test that the colors being printed are expected and if the reset or save options are being used properly.
+
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
