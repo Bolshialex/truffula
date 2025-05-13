@@ -10,6 +10,9 @@ Main implementation for truffula. Gives users options to customize the way their
 
 ## ConsoleColor.java
 
+Allows for coloring text on the console. Provides a number of ANSI codes that correspond to colored values. Provides
+methods for coloring text, getting color codes, and getting color codes as a string. 
+
 ## ColorPrinter.java / ColorPrinterTest.java
 
 ColorPrinter.java is a class used to print different text colors to a PrintStream. Keeps track of different variables like the currentColor and allows you to set the current color, while also resetting the current color or saving it for the next output. lastly, it can print those string out into the terminal.
