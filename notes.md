@@ -21,6 +21,10 @@ ColorPrinterTest.java is used to test that the colors being printed are expected
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
+Constructs the truffula options object for the various cmd arguments. Provides methods for getting the options. 
+
+TruffulaOptionsTest.java run tests on its functionlity. Will need to look into test argument tempDir.
+
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
 
 ## AlphabeticalFileSorter.java
