@@ -18,6 +18,7 @@ import java.io.PrintStream;
  * The printed text will appear in the terminal with the specified colors if the terminal supports ANSI codes.
  */
 public class ColorPrinter {
+
   /**
    * The current color used for printing.
    */
@@ -86,7 +87,11 @@ public class ColorPrinter {
    * @param reset   if true, resets the color after printing; if false, keeps the current color
    */
   public void print(String message, boolean reset) {
-    // TODO: Implement this!
+    printStream.print(currentColor + message);
+    if (reset) {
+      this.setCurrentColor(ConsoleColor.RESET);
+      printStream.print(currentColor);
+    } 
   }
 
   /**
@@ -108,5 +113,14 @@ public class ColorPrinter {
   public ColorPrinter(PrintStream printStream, ConsoleColor color) {
     this.printStream = printStream;
     this.currentColor = color;
+  }
+
+  public static void main(String[] args) {
+    ColorPrinter printer = new ColorPrinter(System.out);
+    printer.setCurrentColor(ConsoleColor.RED);
+    System.out.println("----------------");
+    printer.println("red", true);
+    // printer.setCurrentColor(ConsoleColor.RESET);
+    printer.println("reset color");
   }
 }
