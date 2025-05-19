@@ -107,7 +107,7 @@ public class TruffulaOptions  {
 
 
     for (String str : args) {
-      System.out.println(str);
+
       if(str.startsWith("-")){
         if(str.equals("-h")){
           isHidden = true;
@@ -119,9 +119,7 @@ public class TruffulaOptions  {
       }    
     }
 
-    if(!args[args.length-1].startsWith("/") && !args[args.length-1].startsWith(".")){
-      throw new IllegalArgumentException();
-    }    
+   
     File newFile = new File(args[args.length-1]);
     if(!newFile.isDirectory()) throw new FileNotFoundException();
     if(!newFile.exists()) throw new FileNotFoundException();
