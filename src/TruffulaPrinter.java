@@ -106,7 +106,7 @@ public class TruffulaPrinter {
   public void printTree() {
     // TODO: Implement this!
     // REQUIRED: ONLY use java.io, DO NOT use java.nio
-    printTreeHelper(this.options.getRoot());
+    printTreeHelper(this.options.getRoot(), 0);
     
     // Hints:
     // - Add a recursive helper method
@@ -118,11 +118,18 @@ public class TruffulaPrinter {
     out.println("My options are: " + options);
   }
 
-  public void printTreeHelper(File root) {
+  public void printTreeHelper(File root, int tabs) {
     if (!root.isDirectory()) out.println(root.getName());
     else if (root.listFiles() == null) out.println(root.getName());
     else {
-      for (File newFile : root.listFiles()) printTreeHelper(newFile);
+      out.println(root.getName() + "/");
+      tabs++;
+      for (File newFile : root.listFiles()) {
+        for (int i = 0; i < tabs; i++) {
+          out.print("   ");
+        }
+        printTreeHelper(newFile, tabs);
+      }
     }
   }
 }
