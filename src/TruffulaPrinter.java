@@ -1,5 +1,6 @@
 import java.io.PrintStream;
 import java.util.List;
+import java.io.File;
 
 /**
  * TruffulaPrinter is responsible for printing a directory tree structure
@@ -105,6 +106,7 @@ public class TruffulaPrinter {
   public void printTree() {
     // TODO: Implement this!
     // REQUIRED: ONLY use java.io, DO NOT use java.nio
+    printTreeHelper(this.options.getRoot());
     
     // Hints:
     // - Add a recursive helper method
@@ -114,5 +116,13 @@ public class TruffulaPrinter {
 
     out.println("printTree was called!");
     out.println("My options are: " + options);
+  }
+
+  public void printTreeHelper(File root) {
+    if (!root.isDirectory()) out.println(root.getName());
+    else if (root.listFiles() == null) out.println(root.getName());
+    else {
+      for (File newFile : root.listFiles()) printTreeHelper(newFile);
+    }
   }
 }
