@@ -109,9 +109,6 @@ public class TruffulaPrinter {
     boolean isHidden = this.options.isShowHidden();
     boolean useColor = this.options.isUseColor();
 
-    AlphabeticalFileSorter sorter = new AlphabeticalFileSorter();
-
-
     printTreeHelper(this.options.getRoot(), 0, isHidden, useColor);
     
     // Hints:
