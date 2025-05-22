@@ -117,23 +117,41 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
-    out.println("printTree was called!");
-    out.println("My options are: " + options);
+    // out.println("printTree was called!");
+    // out.println("My options are: " + options);
   }
 
   public void printTreeHelper(File root, int tabs, boolean isHidden, boolean useColor) {  
-    if(root.isHidden() == true && isHidden == false) return;
-    if (!root.isDirectory()) out.println(root.getName());
-  
-    else if (root.listFiles() == null) out.print(root.getName());
-    else {
+    // Create string builder for each line
+    StringBuilder sb = new StringBuilder();
+    // System.out.println("isHidden value: " + isHidden + " " + root.isHidden());
+    // Change color if use color is enabled
+    if (useColor) out.setCurrentColor(colorSequence.get(tabs % 3));
 
-      out.println(root.getName() + "/");
+    // Append spacing as needed
+    for (int i = 0; i < tabs; i++) sb.append("   ");
+
+    // Hidden files
+    if(root.isHidden() == true && isHidden == false) {
+      return;
+    } 
+
+    // if basic file print
+    if (!root.isDirectory()) {
+      sb.append(root.getName());
+      out.println(sb.toString());
+    }
+    // if empty directory print
+    else if (root.listFiles() == null) {
+      sb.append(root.getName()).append("/");
+      out.println(sb.toString());
+    } 
+    // if directory, print directory name, add spacing, then print children
+    else {
+      sb.append(root.getName()).append("/");
+      out.println(sb.toString());
       tabs++;
       for (File newFile : root.listFiles()) {
-        for (int i = 0; i < tabs; i++) out.print("   ", false);
-
-
           printTreeHelper(newFile, tabs, isHidden, useColor);
       }
     }
