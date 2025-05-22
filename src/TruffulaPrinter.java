@@ -109,6 +109,9 @@ public class TruffulaPrinter {
     boolean isHidden = this.options.isShowHidden();
     boolean useColor = this.options.isUseColor();
 
+    AlphabeticalFileSorter sorter = new AlphabeticalFileSorter();
+
+
     printTreeHelper(this.options.getRoot(), 0, isHidden, useColor);
     
     // Hints:
@@ -152,7 +155,8 @@ public class TruffulaPrinter {
       sb.append(root.getName()).append("/");
       out.println(sb.toString());
       tabs++;
-      for (File newFile : root.listFiles()) {
+      File [] sortedFiles = AlphabeticalFileSorter.sort(root.listFiles());
+      for (File newFile : sortedFiles) {
           printTreeHelper(newFile, tabs, isHidden, useColor);
       }
     }
