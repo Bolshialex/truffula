@@ -127,6 +127,7 @@ public class TruffulaPrinter {
     // System.out.println("isHidden value: " + isHidden + " " + root.isHidden());
     // Change color if use color is enabled
     if (useColor) out.setCurrentColor(colorSequence.get(tabs % 3));
+    else out.setCurrentColor(ConsoleColor.WHITE);
 
     // Append spacing as needed
     for (int i = 0; i < tabs; i++) sb.append("   ");

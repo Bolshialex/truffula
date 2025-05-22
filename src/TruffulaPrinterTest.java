@@ -151,7 +151,7 @@ public class TruffulaPrinterTest {
     }
 
     @Test
-    public void testPrintTree_ExactOutput(@TempDir File tempDir) throws IOException {
+    public void testPrintTree_ExactOutput_WithNoColor(@TempDir File tempDir) throws IOException {
         // Build the example directory structure:
         // myFolder/
         //    .hidden.txt
@@ -202,7 +202,7 @@ public class TruffulaPrinterTest {
         dog.createNewFile();
 
         // Set up TruffulaOptions with showHidden = false and useColor = true
-        TruffulaOptions options = new TruffulaOptions(myFolder, false, true);
+        TruffulaOptions options = new TruffulaOptions(myFolder, false, false);
 
         // Capture output using a custom PrintStream
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -219,21 +219,25 @@ public class TruffulaPrinterTest {
         String nl = System.lineSeparator();
 
         // Build expected output with exact colors and indentation
-        
+        ConsoleColor reset = ConsoleColor.RESET;
+        ConsoleColor white = ConsoleColor.WHITE;
+        ConsoleColor purple = ConsoleColor.PURPLE;
+        ConsoleColor yellow = ConsoleColor.YELLOW;
 
         StringBuilder expected = new StringBuilder();
-        expected.append("myFolder/").append(nl);
-        expected.append("   Apple.txt").append(nl);
-        expected.append("   banana.txt").append(nl);
-        expected.append("   Documents/").append(nl);
-        expected.append("      images/").append(nl);
-        expected.append("         cat.png").append(nl);
-        expected.append("         Dog.png").append(nl);
-        expected.append("      notes.txt").append(nl);
-        expected.append("      README.md").append(nl);
-        expected.append("   zebra.txt").append(nl);
+        expected.append(white).append("myFolder/").append(nl).append(reset);
+        expected.append(white).append("   Apple.txt").append(nl).append(reset);
+        expected.append(white).append("   banana.txt").append(nl).append(reset);
+        expected.append(white).append("   Documents/").append(nl).append(reset);
+        expected.append(white).append("      images/").append(nl).append(reset);
+        expected.append(white).append("         cat.png").append(nl).append(reset);
+        expected.append(white).append("         Dog.png").append(nl).append(reset);
+        expected.append(white).append("      notes.txt").append(nl).append(reset);
+        expected.append(white).append("      README.md").append(nl).append(reset);
+        expected.append(white).append("   zebra.txt").append(nl).append(reset);
 
         // Assert that the output matches the expected output exactly
         assertEquals(expected.toString(), output);
     }
+
 }
