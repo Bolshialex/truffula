@@ -106,7 +106,10 @@ public class TruffulaPrinter {
   public void printTree() {
     // TODO: Implement this!
     // REQUIRED: ONLY use java.io, DO NOT use java.nio
-    printTreeHelper(this.options.getRoot(), 0);
+    boolean isHidden = this.options.isShowHidden();
+    boolean useColor = this.options.isUseColor();
+
+    printTreeHelper(this.options.getRoot(), 0, isHidden, useColor);
     
     // Hints:
     // - Add a recursive helper method
@@ -118,17 +121,20 @@ public class TruffulaPrinter {
     out.println("My options are: " + options);
   }
 
-  public void printTreeHelper(File root, int tabs) {
+  public void printTreeHelper(File root, int tabs, boolean isHidden, boolean useColor) {  
+    if(root.isHidden() == true && isHidden == false) return;
     if (!root.isDirectory()) out.println(root.getName());
-    else if (root.listFiles() == null) out.println(root.getName());
+  
+    else if (root.listFiles() == null) out.print(root.getName());
     else {
+
       out.println(root.getName() + "/");
       tabs++;
       for (File newFile : root.listFiles()) {
-        for (int i = 0; i < tabs; i++) {
-          out.print("   ");
-        }
-        printTreeHelper(newFile, tabs);
+        for (int i = 0; i < tabs; i++) out.print("   ", false);
+
+
+          printTreeHelper(newFile, tabs, isHidden, useColor);
       }
     }
   }
