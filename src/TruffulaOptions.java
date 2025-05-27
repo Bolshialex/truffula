@@ -114,15 +114,15 @@ public class TruffulaOptions  {
         }else if(str.equals("-nc")){
           useConsoleColor = false;
         }else{
-          throw new IllegalArgumentException();
+          throw new IllegalArgumentException("Not a valid argument");
         }
       }    
     }
 
    
     File newFile = new File(args[args.length-1]);
-    if(!newFile.isDirectory()) throw new FileNotFoundException();
-    if(!newFile.exists()) throw new FileNotFoundException();
+    if(!newFile.isDirectory()) throw new FileNotFoundException("Not a valid directory");
+    if(!newFile.exists()) throw new FileNotFoundException("Not a valid directory");
 
     root = newFile;
     showHidden = isHidden;
